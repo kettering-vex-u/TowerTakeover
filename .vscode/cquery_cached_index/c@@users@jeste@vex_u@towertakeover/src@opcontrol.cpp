@@ -22,26 +22,38 @@ okapi::Controller master(master);
 void opcontrol() {
 
 	// initalizing all buttons
-	okapi::ControllerButton buttonA(okapi::ControllerDigital::A);
 	okapi::ControllerButton buttonB(okapi::ControllerDigital::B);
 	okapi::ControllerButton buttonX(okapi::ControllerDigital::X);
+	okapi::ControllerButton buttonA(okapi::ControllerDigital::A);
 	okapi::ControllerButton buttonY(okapi::ControllerDigital::Y);
+	// okapi::ControllerButton buttonLB(E_CONTROLLER_DIGITAL_L1);
+	// okapi::ControllerButton buttonLT(E_CONTROLLER_DIGITAL_L2);
+	// okapi::ControllerButton buttonRB(E_CONTROLLER_DIGITAL_R1);
+	// okapi::ControllerButton buttonRT(E_CONTROLLER_DIGITAL_R2);
 
 	// arcade controls
 	double throttle;
 	double rotation;
 	while(true) {
+
+		// setting throttle to the
 		throttle = master.getAnalog(okapi::ControllerAnalog::rightX);
 		rotation = master.getAnalog(okapi::ControllerAnalog::leftY);
 		drive::arcadeDrive(-throttle, rotation);
+
+		// wait and give unnecessary time to other tasks
+		// motor telemetry, joystick values, etc. update every 10ms
+		pros::delay(10);
 	}
 
 	if(buttonA.isPressed()) {
-		manipulator::intake(7500);
+		// values 0-200
+		manipulator::intake(12000);
 	}
 
 	else if(buttonB.isPressed()) {
-		manipulator::outtake(7500);
+		// values 0-200
+		manipulator::outtake(12000);
 	}
 
 	else {

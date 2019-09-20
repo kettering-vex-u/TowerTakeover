@@ -19,21 +19,21 @@ namespace manipulator {
      *  spin the left motor clockwise
      *  spin the right motor counterclockwise
      */
-     void intake(double volts) {
-         manipulator_l->moveVoltage(volts);
-         manipulator_l->moveVoltage(-volts);
+     void intake(double velocity) {
+         manipulator_l->moveVelocity(velocity);
+         manipulator_l->moveVelocity(-velocity);
      }
 
      /** outtake:
       *  spin the left motor counterclockwise
       */
-      void outtake(double volts) {
-          manipulator_l->moveVoltage(-volts);
-          manipulator_r->moveVoltage(volts);
+      void outtake(double velocity) {
+          manipulator_l->moveVelocity(-velocity);
+          manipulator_r->moveVelocity(velocity);
       }
 
       void stopManipulator() {
-          manipulator_l->moveVoltage(0);
-          manipulator_r->moveVoltage(0);
+          manipulator_l->moveVelocity(0);
+          manipulator_r->moveVelocity(0);
       }
 }

@@ -13,6 +13,6 @@
 
 // defining manipulator Motors
 #define MANIPULATOR_LEFT 4
-#define MANIPULATOR_RIGHT 5
+#define MANIPULATOR_RIGHT 14
 
 #endif
