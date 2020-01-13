@@ -2,17 +2,14 @@
 
 using namespace okapi;
 
-std::unique_ptr<okapi::Motor> manipulator_l;
-std::unique_ptr<okapi::Motor> manipulator_r;
-
-const int MANIPULATOR_L = MANIPULATOR_LEFT;
-const int MANIPULATOR_R = MANIPULATOR_RIGHT;
+std::unique_ptr<okapi::Motor> manipulatorLeft;
+std::unique_ptr<okapi::Motor> manipulatorRight;
 
 namespace manipulator {
 
     void init() {
-        manipulator_l = std::make_unique<okapi::Motor>(MANIPULATOR_LEFT);
-        manipulator_r = std::make_unique<okapi::Motor>(MANIPULATOR_RIGHT);
+        manipulatorLeft = std::make_unique<okapi::Motor>(MANIPULATOR_LEFT);
+        manipulatorRight = std::make_unique<okapi::Motor>(MANIPULATOR_RIGHT);
     }
 
     /** manipulator:
@@ -20,20 +17,20 @@ namespace manipulator {
      *  spin the right motor counterclockwise
      */
      void intake(double velocity) {
-         manipulator_l->moveVelocity(velocity);
-         manipulator_l->moveVelocity(-velocity);
+         manipulatorLeft->moveVelocity(velocity);
+         manipulatorLeft->moveVelocity(-velocity);
      }
 
      /** outtake:
       *  spin the left motor counterclockwise
       */
       void outtake(double velocity) {
-          manipulator_l->moveVelocity(-velocity);
-          manipulator_r->moveVelocity(velocity);
+          manipulatorLeft->moveVelocity(-velocity);
+          manipulatorRight->moveVelocity(velocity);
       }
 
       void stopManipulator() {
-          manipulator_l->moveVelocity(0);
-          manipulator_r->moveVelocity(0);
+          manipulatorLeft->moveVelocity(0);
+          manipulatorRight->moveVelocity(0);
       }
 }
