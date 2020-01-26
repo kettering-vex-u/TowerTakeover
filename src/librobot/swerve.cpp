@@ -22,7 +22,7 @@ const double CHASSIS_WIDTH = 15.0;
 
 namespace swerve {
 
-	double temp;	
+	double temp;
 	double wheelbase = 3.0;
 	double chassisWidth = 15.0;
 	double ratio;
@@ -39,7 +39,7 @@ namespace swerve {
 
 	}
 
-	void swerveDrive(double throttle, double strafe, double rotation) {
+	void swerveDrive(double throttle, double strafe, double rotation) {e
 		temp = (throttle * cos(gyroAngle)) + (strafe * sin(gyroAngle));
 		strafe = (-throttle * sin(gyroAngle)) + (strafe * cos(gyroAngle));
 		throttle = temp;
